@@ -1,18 +1,18 @@
 <app-header></app-header>
 <div class="container">
-  <div class="row my-3">
+  <div class="row my-3 ms-0">
     <button type="button" class="btn btn-light back-btn" routerLink="/">
       Back
     </button>
   </div>
   <div class="row mt-5">
-    <div class="col-6">
+    <div class="col-lg-6 col-md-12 mb-4">
       <img class="flag-img" [src]="countryData.flags.png" alt="" />
     </div>
-    <div class="col-6">
+    <div class="col-lg-6 col-md-12">
       <h2>{{ countryData.name.common }}</h2>
 
-      <div class="data-content d-flex justify-content-between mb-3">
+      <div class="data-content d-md-flex justify-content-between mb-3">
         <div class="left-data-content d-flex flex-column">
           <span
             ><strong>Native name: </strong>
@@ -44,7 +44,7 @@
           >
         </div>
       </div>
-      <div class="mt-5">
+      <div class="mt-5" *ngIf="countryData?.borders">
         <span
           ><strong>Border Countries: </strong>
           <span *ngFor="let border of countryData?.borders" class="span-border">
