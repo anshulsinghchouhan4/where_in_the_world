@@ -1,0 +1,28 @@
+span {
+  font-family: var(--font-family);
+}
+
+h2 {
+  font-family: var(--font-family);
+  font-weight: 900;
+}
+
+.back-btn {
+  width: 10%;
+  background-color: white;
+  box-shadow: grey;
+  border: 1px solid grey;
+  font-family: var(--font-family);
+}
+
+.flag-img {
+  width: 25rem;
+  height: 20rem;
+  border: 1px solid black;
+}
+
+.span-border {
+  border: 1px solid black;
+  margin: 1rem;
+  padding: 4px;
+}

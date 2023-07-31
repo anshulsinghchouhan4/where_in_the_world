@@ -1,0 +1,49 @@
+<app-header></app-header>
+<div class="main-content p-5">
+  <div class="selection-criteria d-flex justify-content-between">
+    <div class="search-country">
+      <input
+        class="form-control"
+        type="text"
+        name="search"
+        [(ngModel)]="searchText"
+        autocomplete="off"
+        placeholder="&#61442;  Search for a country..."
+      />
+    </div>
+    <div class="dropdown">
+      <button
+        class="btn btn-light dropdown-toggle"
+        type="button"
+        id="dropdownMenuButton1"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        Filter by Region
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li *ngFor="let region of allRegions">
+          <a class="dropdown-item" href="#">{{ region }}</a>
+        </li>
+        <!-- <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li> -->
+      </ul>
+    </div>
+  </div>
+  <div class="countries-data d-flex flex-wrap mt-4">
+    <div
+      class="card"
+      *ngFor="let country of allCountries | filter: searchText"
+      (click)="showDetails(country)"
+    >
+      <img [src]="country.flags.png" class="card-img-top" alt="..." />
+      <div class="card-body">
+        <h5 class="card-title">{{ country.name.common }}</h5>
+
+        <h6><strong>Population: </strong>{{ country.population }}</h6>
+        <h6><strong>Region: </strong>{{ country.region }}</h6>
+        <h6><strong>Capital: </strong>{{ country.capital }}</h6>
+      </div>
+    </div>
+  </div>
+</div>
