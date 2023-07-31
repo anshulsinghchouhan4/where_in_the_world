@@ -22,7 +22,6 @@ export class CountryComponent implements OnInit {
 
     const keyCurrenyArray = Object.keys(this.countryData?.currencies);
     this.currencyFirstKey = keyCurrenyArray[0];
-    console.log('anshul', this.countryData);
   }
 
   ngOnInit(): void {}

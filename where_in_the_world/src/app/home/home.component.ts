@@ -11,6 +11,7 @@ export class HomeComponent implements OnInit {
   allCountries: any;
   allRegions: any = [];
   searchText: any;
+  noFilterData: any;
   constructor(
     private http: HttpClient,
     private shareDataService: ShareDataService,
@@ -21,8 +22,8 @@ export class HomeComponent implements OnInit {
     this.http
       .get('https://restcountries.com/v3.1/all')
       .subscribe((data: any) => {
-        console.log(data);
         this.allCountries = data.slice(0, 10);
+        this.noFilterData = this.allCountries;
         for (let country of this.allCountries) {
           this.allRegions.push(country.region);
         }
@@ -33,5 +34,20 @@ export class HomeComponent implements OnInit {
     this.shareDataService.currentCountry = data;
     sessionStorage.setItem('current_country', JSON.stringify(data));
     this.router.navigate(['/country']);
+  }
+
+  selectedByRegion(event: any) {
+    let value = event.target.value;
+    if (value == 'no_data') {
+      this.allCountries = this.noFilterData;
+      return;
+    }
+    let tempArray = [];
+    for (let country of this.noFilterData) {
+      if (country.region === value) {
+        tempArray.push(country);
+      }
+    }
+    this.allCountries = tempArray;
   }
 }

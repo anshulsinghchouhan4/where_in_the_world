@@ -12,22 +12,16 @@
       />
     </div>
     <div class="dropdown">
-      <button
-        class="btn btn-light dropdown-toggle"
-        type="button"
-        id="dropdownMenuButton1"
-        data-bs-toggle="dropdown"
-        aria-expanded="false"
+      <select
+        class="form-select form-select mb-3"
+        aria-label=".form-select-lg example"
+        (change)="selectedByRegion($event)"
       >
-        Filter by Region
-      </button>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-        <li *ngFor="let region of allRegions">
-          <a class="dropdown-item" href="#">{{ region }}</a>
-        </li>
-        <!-- <li><a class="dropdown-item" href="#">Another action</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li> -->
-      </ul>
+        <option selected value="no_data">Filter by Region</option>
+        <option *ngFor="let region of allRegions" [value]="region">
+          {{ region }}
+        </option>
+      </select>
     </div>
   </div>
   <div class="countries-data d-flex flex-wrap mt-4">
