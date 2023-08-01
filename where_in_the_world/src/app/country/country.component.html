@@ -15,48 +15,69 @@
       <img class="flag-img" [src]="countryData.flags.png" alt="" />
     </div>
     <div class="col-lg-6 col-md-12">
-      <h2>{{ countryData.name.common }}</h2>
+      <h2>{{ countryData.name.common || "NA" }}</h2>
 
       <div class="data-content d-md-flex justify-content-between mb-3">
         <div class="left-data-content d-flex flex-column">
           <span
             ><strong>Native name: </strong>
-            {{ countryData?.name.nativeName[nativeNameFirstKey].common }}</span
+
+            <span *ngIf="!countryData?.name?.nativeName">NA</span>
+            <span *ngIf="countryData?.name?.nativeName">{{
+              countryData?.name.nativeName[nativeNameFirstKey].common || "NA"
+            }}</span>
+          </span>
+          <span
+            ><strong>Population: </strong>
+            {{ countryData?.population || 0 }}</span
           >
           <span
-            ><strong>Population: </strong> {{ countryData?.population }}</span
+            ><strong>Region: </strong> {{ countryData?.region || "NA" }}</span
           >
-          <span><strong>Region: </strong> {{ countryData?.region }}</span>
           <span
-            ><strong>Sub Region: </strong> {{ countryData?.subregion }}</span
+            ><strong>Sub Region: </strong>
+            {{ countryData?.subregion || "NA" }}</span
           >
-          <span><strong>Captial: </strong> {{ countryData?.capital }}</span>
+          <span
+            ><strong>Captial: </strong> {{ countryData?.capital || "NA" }}</span
+          >
         </div>
         <div class="right-data-content d-flex flex-column">
           <span
             ><strong>Top Level Domain: </strong>
-            {{ countryData?.name.nativeName[nativeNameFirstKey].common }}</span
-          >
+            <span *ngIf="!countryData?.name?.nativeName">NA</span>
+            <span *ngIf="countryData?.name?.nativeName">
+              {{
+                countryData?.name.nativeName[nativeNameFirstKey].common || "NA"
+              }}
+            </span>
+          </span>
           <span
             ><strong>Currencies: </strong>
-            {{ countryData?.currencies[currencyFirstKey].name }}</span
-          >
+            <span *ngIf="!countryData?.currencies">NA</span>
+            <span *ngIf="countryData?.currencies">{{
+              countryData?.currencies[currencyFirstKey].name
+            }}</span>
+          </span>
           <span
             ><strong>Languages: </strong>
-            <span *ngFor="let lang of countryData?.languages | keyvalue">
-              {{ lang.value }}</span
-            ></span
-          >
+            <span *ngIf="!countryData?.languages">NA</span>
+            <span *ngIf="countryData?.languages">
+              <span *ngFor="let lang of countryData?.languages | keyvalue">
+                {{ lang.value || "NA" }}
+              </span>
+            </span>
+          </span>
         </div>
       </div>
       <div class="mt-5" *ngIf="countryData?.borders">
         <span><strong>Border Countries </strong></span>
-        <div>
+        <div routerLink="">
           <button
             *ngFor="let border of countryData?.borders"
             class="btn btn-border"
           >
-            {{ border }}
+            {{ border || "NA" }}
           </button>
         </div>
       </div>

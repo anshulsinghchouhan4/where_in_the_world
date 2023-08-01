@@ -34,12 +34,12 @@
       <img [src]="country.flags.png" class="card-img-top" alt="..." />
       <div class="card-body">
         <h5 class="card-title">
-          <strong>{{ country.name.common }}</strong>
+          <strong>{{ country.name.common || "NA" }}</strong>
         </h5>
 
-        <h6><strong>Population: </strong>{{ country.population }}</h6>
-        <h6><strong>Region: </strong>{{ country.region }}</h6>
-        <h6><strong>Capital: </strong>{{ country.capital }}</h6>
+        <h6><strong>Population: </strong>{{ country.population || 0 }}</h6>
+        <h6><strong>Region: </strong>{{ country.region || "NA" }}</h6>
+        <h6><strong>Capital: </strong>{{ country.capital || "NA" }}</h6>
       </div>
     </div>
   </div>

@@ -17,11 +17,18 @@ export class CountryComponent implements OnInit {
       this.countryData = sessionStorage.getItem('current_country');
       this.countryData = JSON.parse(this.countryData);
     }
-    const keyNativeNameArray = Object.keys(this.countryData?.name?.nativeName);
-    this.nativeNameFirstKey = keyNativeNameArray[0];
-
-    const keyCurrenyArray = Object.keys(this.countryData?.currencies);
-    this.currencyFirstKey = keyCurrenyArray[0];
+    if (this.countryData?.name?.nativeName) {
+      const keyNativeNameArray = Object.keys(
+        this.countryData?.name?.nativeName,
+      );
+      this.nativeNameFirstKey = keyNativeNameArray
+        ? keyNativeNameArray[0]
+        : 'NA';
+    }
+    if (this.countryData?.currencies) {
+      const keyCurrenyArray = Object.keys(this.countryData?.currencies);
+      this.currencyFirstKey = keyCurrenyArray ? keyCurrenyArray[0] : 'NA';
+    }
   }
 
   ngOnInit(): void {}

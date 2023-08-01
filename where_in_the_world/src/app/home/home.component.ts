@@ -22,11 +22,12 @@ export class HomeComponent implements OnInit {
     this.http
       .get('https://restcountries.com/v3.1/all')
       .subscribe((data: any) => {
-        this.allCountries = data.slice(0, 10);
+        this.allCountries = data;
         this.noFilterData = this.allCountries;
         for (let country of this.allCountries) {
           this.allRegions.push(country.region);
         }
+        this.allRegions = Array.from(new Set(this.allRegions));
       });
   }
 
