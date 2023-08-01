@@ -5,8 +5,19 @@
     margin: 1rem;
     .form-control {
       font-family: inherit;
+      padding-left: 35px;
     }
-    .dropdown {
+    .search-country {
+      position: relative;
+
+      .search-icon {
+        position: absolute;
+        top: 25%;
+        left: 8px;
+        transform: translateY(-50%);
+      }
+    }
+    .filter-region {
       font-family: inherit;
     }
   }
@@ -29,8 +40,22 @@
         }
         h6 {
           font-family: inherit;
+          font-size: 14px;
         }
       }
+    }
+  }
+}
+
+/* Media query for mobile view (max-width: 767px) */
+@media (max-width: 767px) {
+  .selection-criteria {
+    display: block !important;
+    .search-icon {
+      top: 50% !important;
+    }
+    .filter-region {
+      width: 70% !important;
     }
   }
 }

@@ -1,7 +1,12 @@
 <app-header></app-header>
 <div class="container">
   <div class="row my-3 ms-0">
-    <button type="button" class="btn btn-light back-btn" routerLink="/">
+    <button
+      type="button"
+      class="btn btn-light back-btn d-flex justify-content-evenly align-items-center"
+      routerLink="/"
+    >
+      <i class="fas fa-arrow-left fa-xs"></i>
       Back
     </button>
   </div>
@@ -45,12 +50,15 @@
         </div>
       </div>
       <div class="mt-5" *ngIf="countryData?.borders">
-        <span
-          ><strong>Border Countries: </strong>
-          <span *ngFor="let border of countryData?.borders" class="span-border">
-            {{ border }}</span
-          ></span
-        >
+        <span><strong>Border Countries </strong></span>
+        <div>
+          <button
+            *ngFor="let border of countryData?.borders"
+            class="btn btn-border"
+          >
+            {{ border }}
+          </button>
+        </div>
       </div>
     </div>
   </div>

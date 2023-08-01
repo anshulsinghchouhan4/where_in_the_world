@@ -2,16 +2,17 @@
 <div class="main-content p-5">
   <div class="selection-criteria d-flex justify-content-between">
     <div class="search-country">
+      <i class="fas fa-search search-icon"></i>
       <input
         class="form-control"
         type="text"
         name="search"
         [(ngModel)]="searchText"
         autocomplete="off"
-        placeholder="&#61442;  Search for a country..."
+        placeholder="Search for a country..."
       />
     </div>
-    <div class="dropdown">
+    <div class="filter-region mt-3">
       <select
         class="form-select form-select mb-3"
         aria-label=".form-select-lg example"
@@ -32,7 +33,9 @@
     >
       <img [src]="country.flags.png" class="card-img-top" alt="..." />
       <div class="card-body">
-        <h5 class="card-title">{{ country.name.common }}</h5>
+        <h5 class="card-title">
+          <strong>{{ country.name.common }}</strong>
+        </h5>
 
         <h6><strong>Population: </strong>{{ country.population }}</h6>
         <h6><strong>Region: </strong>{{ country.region }}</h6>
